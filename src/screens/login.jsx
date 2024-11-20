@@ -69,7 +69,7 @@ function Login() {
       <ToastContainer />
       <MobileLogin visiblePin={showMobileLogin} setVisiblePin={setShowMobileLogin} />
       <div className="container d-flex loginForm position-relative border shadow p-3 mt-5">
-        <div className='container'>
+        <div data-aos="fade-right" className='container'>
           <div className="p-3">
             <div className="form-floating mb-3">
               <input type="number" className="form-control" id="floatingInput" placeholder="98XXXXXXXXXX"
@@ -129,7 +129,7 @@ function Login() {
             </div>
           </div>
         </div>
-        <div className="container loginImageContainer">
+        <div data-aos="fade-left" className="container loginImageContainer">
           <img src={loginImage} alt="" className='img-fluid' />
         </div>
       </div>

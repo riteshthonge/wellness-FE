@@ -56,7 +56,7 @@ function Signup() {
       <h2 className='text-start my-2  mt-5'><strong>Hey User,Fill the Signup Form Below</strong></h2>
       <div className='container p-3'>
         <form className=' d-flex p-3  container rounded position-relative' style={{ zIndex: 2 }}>
-          <div className='container col-md-7'>
+          <div data-aos="fade-right" className='container col-md-7'>
             <div className="form-floating  mb-3">
               <input type="text" className="form-control" id="fName" placeholder="First Name"
                 onChange={(e) =>
@@ -134,7 +134,7 @@ function Signup() {
               </button>
             </div>
           </div>
-          <div className="container mx-auto my-auto  loginImageContainer">
+          <div data-aos="fade-left" className="container mx-auto my-auto  loginImageContainer">
             <img id='signUpImage' src={signupImg} className='img-fluid ' alt="Sign Up Background " />
           </div>
 

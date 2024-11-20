@@ -53,7 +53,7 @@ function AdminServicesCard() {
             <button className="carousel-control prev" onClick={handlePrev}>‹</button>
             <div className="carousel-inner p-1 d-flex justify-content-center">
                 {visibleCards.map((card, i) => (
-                    <div key={i} className={`card-container ${i === 1 ? 'active' : ''}`}>
+                    <div data-aos="fade-up" key={i} className={`card-container ${i === 1 ? 'active' : ''}`}>
                         <div className="card rounded shadow p-3 border-0" style={{ width: '20rem' }}>
                             <img
                                 src={card.img}

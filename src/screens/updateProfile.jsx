@@ -69,7 +69,7 @@ function UpdateProfile() {
             <FontAwesomeIcon icon={faArrowLeft} size="2x" onClick={() => navigate(-1)} style={{ cursor: 'pointer' }} />
         </div>
         <div className="container update-body mt-3 d-flex  p-2 border border-success align-items-center rounded  ">
-            <div className="container">
+            <div data-aos="fade-right" className="container">
                 <div className="">
                     <h4 className='text-start'><strong>Hey</strong> User!</h4>
                     <p>Update Your Profile</p>
@@ -100,7 +100,7 @@ function UpdateProfile() {
                     </div>
                 </div>
             </div>
-            <div className="container">
+            <div data-aos="fade-left" className="container">
                 <img className='img-fluid ' src={updateProfile} alt="" />
             </div>
         </div>
