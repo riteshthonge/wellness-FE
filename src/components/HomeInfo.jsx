@@ -1,55 +1,112 @@
-import React from 'react'
-import img from '../assetes/Dairy/homeOne.png'
-import recharge from '../assetes/Dairy/cardOne.jpg'
-import transaction from '../assetes/Dairy/cardTwo.png'
-import account from '../assetes/Dairy/cardThree.webp'
-import { useNavigate } from 'react-router-dom'
+import React from "react";
+import img from "../assetes/welleness.png";
+import img1 from "../assetes/welleness1.png";
+import img2 from "../assetes/wellness3.png";
+
+import emergency from "../assetes/Dairy/emergency.png";
+
+import { useNavigate } from "react-router-dom";
+
 function HomeInfo() {
   const navigate = useNavigate();
-  const gotToSignUp = () => {
-    navigate('/signup');
-  }
+
   return (
-    <div className="container">
-      <div className="col-md-12 homeInfo d-flex justify-content-center align-items-center">
-        <div data-aos="fade-right" className=' p-3'>
-          <h2 className='my-4'>Dairy Management Made for <strong>Modern </strong> Farmers</h2>
-          <p className='my-4'>Streamline your dairy operations with tools designed to simplify tracking milk production, rates, and earnings.</p>
-          <button onClick={gotToSignUp} className='btn btn-success rounded w-50 '>Sign Up Now!</button>
+    <div className="container py-5">
+      {/* Hero Section */}
+      <div className="row align-items-center justify-content-between mb-5">
+        <div
+          data-aos="fade-right"
+          className="col-md-6 text-center text-md-start"
+        >
+          <h2 className="mb-4">
+            Wellness Platform Built for <strong>Mindful</strong> Living
+          </h2>
+          <p className="mb-4">
+            Discover, create, and manage personalized wellness sessions
+            including yoga, meditation, and more — all designed to help you stay
+            centered, balanced, and in control of your well-being.
+          </p>
         </div>
-        <div data-aos="fade-left" className=' p-3'>
-          <img className='img-fluid' src={img} alt="Bank Image" />
+        <div data-aos="fade-left" className="col-md-6 text-center">
+          <img
+            src={img}
+            alt="Project Tracker"
+            style={{
+              maxWidth: "80%",
+              height: "80%",
+              objectFit: "contain",
+            }}
+          />
         </div>
       </div>
-      <div className="container my-3 row">
-        <h2 className='text-center my-3'>Take your <strong>Dairy Business</strong> to the next level!</h2>
+
+      {/* Feature Section */}
+      <div className="text-center mb-5">
+        <h2>
+          Take your <strong>Wellness Journey</strong> to the next level!
+        </h2>
+      </div>
+
+      <div className="row justify-content-center">
+        {/* Feature 1 */}
         <div data-aos="fade-up" className="col-md-4 mb-4">
-          <div  className="card mx-auto rounded shadow p-3 border border-none" style={{ width: '25rem' }}>
-            <img src={transaction} className="card-img-top" alt="Milk Status" />
-            <h4>Milk Collection Status</h4>
-            <p>Track daily milk collections, shifts, and overall quantities with ease, all in one place.</p>
+          <div className="card h-100 shadow rounded-4 p-3 border-0 text-center">
+            <img
+              src={img}
+              className="card-img-top mx-auto"
+              alt="User-Friendly Interface"
+              style={{ height: "200px", objectFit: "contain" }}
+            />
+            <div className="card-body">
+              <h5 className="card-title">User-Friendly Interface</h5>
+              <p className="card-text">
+                Easily explore, create, and manage your wellness sessions with a
+                clean, calming, and intuitive design.
+              </p>
+            </div>
           </div>
         </div>
 
+        {/* Feature 2 */}
         <div data-aos="fade-up" className="col-md-4 mb-4">
-          <div className="card mx-auto rounded shadow p-3 my-3 border border-none" style={{ width: '25rem' }}>
-            <img src={account} className="card-img-top" alt="Simple UI" />
-            <h4>Farmer-Friendly Interface</h4>
-            <p>Navigate with ease using a simple and intuitive interface designed for seamless dairy management.</p>
+          <div className="card h-100 shadow rounded-4 p-3 border-0 text-center">
+            <img
+              src={img2}
+              className="card-img-top mx-auto"
+              alt="Real-Time Auto-Save"
+              style={{ height: "200px", objectFit: "contain" }}
+            />
+            <div className="card-body">
+              <h5 className="card-title">Real-Time Auto-Save</h5>
+              <p className="card-text">
+                Your drafts are automatically saved as you type, so you never
+                lose your progress during session creation.
+              </p>
+            </div>
           </div>
         </div>
 
+        {/* Feature 3 */}
         <div data-aos="fade-up" className="col-md-4 mb-4">
-          <div className="card mx-auto rounded shadow p-3 border border-none" style={{ width: '25rem' }}>
-            <img src={recharge} className="card-img-top" alt="Record Handling" />
-            <h4>Effortless Record Management</h4>
-            <p>Maintain and access detailed records of milk rates, quantities, and earnings in just a few clicks.</p>
+          <div className="card h-100 shadow rounded-4 p-3 border-0 text-center">
+            <img
+              src={img1}
+              className="card-img-top mx-auto"
+              alt="Personalized Wellness"
+              style={{ height: "200px", objectFit: "contain" }}
+            />
+            <div className="card-body">
+              <h5 className="card-title">Personalized Wellness Plans</h5>
+              <p className="card-text">
+                Customize your yoga, meditation, or relaxation sessions to match
+                your goals and daily routine.
+              </p>
+            </div>
           </div>
         </div>
-
       </div>
     </div>
-  )
+  );
 }
 
-export default HomeInfo
+export default HomeInfo;

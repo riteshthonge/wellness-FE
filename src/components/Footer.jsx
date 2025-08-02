@@ -14,16 +14,16 @@ function Footer() {
                 <img className='img-fluid social-img hover' src={instagram} alt="" />
             </div>
             <div className="conatiner m-0 p-0">
-                <p className='hover m-0 p-0'>Copyright © 2024 by</p>
+                <p className='hover m-0 p-0'>Copyright © 2025 by Arvyax Wellness</p>
                 <br />
-                <p className='hover m-0 p-0'>FarmDairy,All rights reserved.</p>
+                <p className='hover m-0 p-0'>Arvyax Wellness,All rights reserved.</p>
             </div>
         </section>
         <section className='col-md-4 p-2'>
             <h6>Contact us</h6>
-            <p className='hover m-0 p-0'>FarmDairy, Chatarapati complex, 2nd Floor, Barshi, Solapur 431411</p>
+            <p className='hover m-0 p-0'>Arvyax Wellness, Chatarapati complex, 2nd Floor, Barshi, Solapur 431411</p>
             <p className='hover m-0 p-0'>9834935898</p>
-            <p className='hover m-0 p-0'>hello@FarmDairy.com</p>
+            <p className='hover m-0 p-0'>hello@P-Arvyax-Wellness,.com</p>
         </section>
         <section className='col-md-4 p-2'>
         <h6>Account</h6>
@@ -36,4 +36,4 @@ function Footer() {
   )
 }
 
-export default Footer
+export default Footer;

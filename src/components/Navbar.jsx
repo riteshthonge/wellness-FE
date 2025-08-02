@@ -3,9 +3,11 @@ import { Link } from 'react-router-dom';
 
 function Navbar() {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar navbar-expand-lg navbar-light ">
       <div className="container-fluid">
-        <Link className="navbar-brand" to="/">FarmDairy</Link>
+        <Link className="navbar-brand text-success fs-5 font-bold" to="/">Arvyax Wellness</Link>
+
+
         <button
           className="navbar-toggler"
           type="button"
@@ -22,16 +24,16 @@ function Navbar() {
             <li className="nav-item">
               <Link className="nav-link active" aria-current="page" to="#">Home</Link>
             </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/contact">Contact Us</Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" >Make Payment</Link>
-            </li>
+          
+           
           </ul>
           <div className="d-flex">
+            <Link to="/signup" className="btn btn-outline-primary me-2">Sign Up</Link>
+           
+          </div>
+          <div className="d-flex">
             <Link to="/login" className="btn btn-outline-success me-2">Log In</Link>
-            <Link to="/signup" className="btn btn-outline-primary">Sign Up</Link>
+           
           </div>
         </div>
       </div>

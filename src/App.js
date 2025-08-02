@@ -3,8 +3,11 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import { Login,CowFeed,Contact,UserDashBord,Home,Signup, UpdateProfile,OpenAccountScreen,DailyMilkCount,AddMilkPrice,MilkDailyCard } from './screens/index';
+
+
+import { Login,AddSession,UserDashBord,Home,Signup, AllYogaSessions, AllExerciseSessions, AllMeditationSessions, MeditationSessionDetails, YogaSessionDetails, ExerciseSessionDetails } from './screens/index';
 import { useEffect } from 'react';
+
 function App() {
   useEffect(() => {
     AOS.init({
@@ -16,24 +19,38 @@ function App() {
   }, []);
   return (
     <div className="page-body">
-      <BrowserRouter>
+     
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="/user" element={<UserDashBord/>} />
         <Route path="/signup" element={<Signup/>} />
         <Route path="/login" element={<Login/>} />
-        <Route path="/contact" element={<Contact/>} />
-        <Route path="/cow-feed-availability" element={<CowFeed/>} />
-        <Route path="/update-profile" element={<UpdateProfile/>} />
+        
+         <Route path="/add-session" element={<AddSession/>} />
+         <Route path="/yoga-session" element={<AllYogaSessions/>} />
+         <Route path="/exercise-session" element={<AllExerciseSessions/>} />
+         <Route path="/meditation-session" element={<AllMeditationSessions/>} />
+        <Route path="/meditation-session-details/:id" element={<MeditationSessionDetails />} />
+          <Route path="/yoga-session-details/:id" element={<YogaSessionDetails/>} />
+          <Route path="/exercise-session-details/:id" element={<ExerciseSessionDetails/>} />
 
-        <Route path="/create-account" element={<OpenAccountScreen/>} />
-        <Route path="/add-milk-count" element={<DailyMilkCount/>} />
 
-        <Route path="/add-milk-price" element={<AddMilkPrice/>} />
 
-        <Route path="/show-milk" element={<MilkDailyCard/>} />
-      </Routes>
-    </BrowserRouter>
+        
+       
+       
+       
+       
+       
+
+   
+        
+
+        
+    
+        
+        </Routes>
+    
     </div>
   );
 }

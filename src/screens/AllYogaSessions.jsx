@@ -1,0 +1,82 @@
+import React, { useContext } from "react";
+import { AppContext } from "../context/AppContext";
+import UserNavbar from "../components/UserNavbar";
+import yoga from "../assetes/yoga.png";
+
+const AllYogaSessions = () => {
+  const { userData, yogaSessions ,navigate} = useContext(AppContext);
+
+  if (!yogaSessions || yogaSessions.length === 0) {
+    return (
+      <div>
+        <UserNavbar />
+        <div className="text-center mt-5 text-muted">
+          No yoga sessions available.
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div>
+      <UserNavbar />
+      <div className="container mt-5 py-4">
+        <h2 className="text-center mb-5 fw-bold text-success">
+          Explore All Yoga Sessions
+        </h2>
+        <div className="row">
+          {yogaSessions.map((session) => (
+            <div className="col-md-6 col-lg-4 mb-4" key={session._id}>
+              <div
+                className="card h-100 shadow-sm border rounded-4 bg-light "
+                style={{ boxShadow: "0 4px 20px rgba(0, 0, 0, 0.08)" }}
+              >
+                <div className="card-body p-4 d-flex flex-column text-start justify-content-start">
+                  {/* Session Name */}
+                  <h5 className="card-title text-success text-center fw-bold mb-3">
+                    {session.sessionName}
+                  </h5>
+
+                  <img src={yoga} alt="" />
+
+                  {/* Duration */}
+                  <p className="card-text mb-1">
+                    <strong className="text-dark"> Duration:</strong>{" "}
+                    {session.duration} minutes
+                  </p>
+
+                  {/* Start Date */}
+                  <p className="card-text mb-1">
+                    <strong className="text-dark"> Start Date:</strong>{" "}
+                    {new Date(session.startDate).toLocaleDateString()}
+                  </p>
+                  <p className="card-text mb-1">
+                    <strong className="text-dark"> End Date:</strong>{" "}
+                    {new Date(session.endDate).toLocaleDateString()}
+                  </p>
+
+                  {/* Time */}
+                  <p className="card-text mb-3">
+                    <strong className="text-dark"> Time:</strong>{" "}
+                    {session.timing}
+                  </p>
+
+                  <button
+                    className="btn btn-md btn-success mt-auto"
+                    onClick={() =>
+                      navigate(`/yoga-session-details/${session._id}`)
+                    }
+                  >
+                    View
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default AllYogaSessions;
