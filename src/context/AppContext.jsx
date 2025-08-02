@@ -26,7 +26,7 @@ export const AppContextProvider = ({ children }) => {
     JSON.parse(localStorage.getItem("allUsers")) || []
   );
 
-  const backendUrl = "https://wellness-be-1.onrender.com";
+  const backendUrl = "https://wellness-be.onrender.com";
   
 
   const getUserData = async () => {
