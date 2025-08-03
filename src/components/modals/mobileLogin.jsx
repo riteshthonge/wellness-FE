@@ -17,7 +17,7 @@ import { useNavigate } from "react-router-dom";
 
 function MobileLogin({ visiblePin, setVisiblePin }) {
 const navigate=useNavigate();
-   const{getUserData}=useContext(AppContext);
+   const{getUserData ,token, setToken}=useContext(AppContext);
 
   const [email, setEmail] = useState("");
   const [otp, setOtp] = useState("");
@@ -34,6 +34,8 @@ const {data}=await axios.post("http://localhost:4000/api/user/verify-otp",{
 })
 setLoading(false);
 if(data.success){
+  setToken(data.data)
+    localStorage.setItem("token", JSON.stringify(data.data || []));
     toast.success(data.success);
 await getUserData();
 

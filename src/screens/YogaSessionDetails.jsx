@@ -8,7 +8,7 @@ import UserNavbar from '../components/UserNavbar';
 
 const YogaSessionDetails = () => {
   const { id } = useParams();
-  const { yogaSessions, allUsers, backendUrl, userData, getAllUsers } = useContext(AppContext);
+  const { yogaSessions, allUsers, backendUrl, userData, getAllUsers,token } = useContext(AppContext);
 
   const session = yogaSessions.find((s) => s._id === id);
   const [organiser, setOrganiser] = useState(null);
@@ -37,16 +37,18 @@ const YogaSessionDetails = () => {
 
     try {
       const response = await axios.post(
-        `${backendUrl}/api/user/enrollInto-session`,
-        {
-          user_id: userData.id,
-          session_id: session._id,
-        },
-        {
-          withCredentials: true,
-        }
-      );
-
+    `${backendUrl}/api/user/enrollInto-session`,
+    {
+      user_id: userData.id,
+      session_id: session._id,
+    },
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      withCredentials: true,
+    }
+  );
       if (response.data.success) {
         toast.success("Successfully enrolled in the session!");
         setLocalMembers((prev) => [...prev, userData.id]);

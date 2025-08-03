@@ -31,7 +31,7 @@ function Login() {
   const [passwordType, setPasswordType] = useState("password");
   const [icon, setIcon] = useState(eyeOff);
 
-  const { backendUrl, getUserData } = useContext(AppContext);
+  const { backendUrl, getUserData,setToken } = useContext(AppContext);
 
   const loginHandler = async () => {
     if (!phone || !password) {
@@ -47,9 +47,15 @@ function Login() {
       });
       setLoading(false);
       if (data.success) {
-        await getUserData();
+       await  setToken(data.data)
+        
+            localStorage.setItem("token", JSON.stringify(data.data || []));
+            toast.success(data.success);
+           await getUserData();
+        
+       
         toast.success(data.message);
-        navigate("/user");
+    
       } else {
         toast.error(data.message);
       }

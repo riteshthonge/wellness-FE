@@ -8,7 +8,7 @@ import UserNavbar from '../components/UserNavbar';
 
 const MeditationSessionDetails = () => {
   const { id } = useParams();
-  const { meditationSessions, allUsers, backendUrl, userData, getAllUsers } = useContext(AppContext);
+  const { meditationSessions, allUsers, backendUrl, userData, getAllUsers ,token} = useContext(AppContext);
 
   const session = meditationSessions.find((s) => s._id === id);
   const [organiser, setOrganiser] = useState(null);
@@ -36,16 +36,19 @@ const MeditationSessionDetails = () => {
     }
 
     try {
-      const response = await axios.post(
-        `${backendUrl}/api/user/enrollInto-session`,
-        {
-          user_id: userData.id,
-          session_id: session._id,
-        },
-        {
-          withCredentials: true,
-        }
-      );
+     const response = await axios.post(
+    `${backendUrl}/api/user/enrollInto-session`,
+    {
+      user_id: userData.id,
+      session_id: session._id,
+    },
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      withCredentials: true,
+    }
+  );
 
       if (response.data.success) {
         toast.success("Successfully enrolled in the session!");

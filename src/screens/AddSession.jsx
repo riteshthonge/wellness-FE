@@ -7,7 +7,7 @@ import UserNavbar from "../components/UserNavbar";
 import axios from "axios";
 
 function AddSession() {
-  const { backendUrl, userData, getAllSessions } = useContext(AppContext);
+  const { backendUrl, userData, getAllSessions,token } = useContext(AppContext);
   const [loading, setLoading] = useState(false);
 
   const [formData, setFormData] = useState({
@@ -60,10 +60,19 @@ function AddSession() {
     }
 
     try {
-      const { data } = await axios.post(`${backendUrl}/api/user/create-wellness-session`, {
-        ...formData,
-        createdBy: userData.id,
-      });
+     const { data } = await axios.post(
+  `${backendUrl}/api/user/create-wellness-session`,
+  {
+    ...formData,
+    createdBy: userData.id,
+  },
+  {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+    withCredentials: true, // optional, needed only if you're also using cookies
+  }
+);
 
       if (data.success) {
         toast.success(data.message);
