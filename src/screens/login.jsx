@@ -6,14 +6,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import Footer from "../components/Footer";
 import { useContext, useState } from "react";
-
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
 import { PushSpinner } from "react-spinners-kit";
-
 import MobileLogin from "../components/modals/mobileLogin";
-import loginImage from "../assetes/welleness.png";
 import { Icon } from "react-icons-kit";
 import { eyeOff } from "react-icons-kit/feather/eyeOff";
 import { eye } from "react-icons-kit/feather/eye";
@@ -26,12 +22,10 @@ function Login() {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [showMobileLogin, setShowMobileLogin] = useState(false);
-
-  // Password visibility toggle
   const [passwordType, setPasswordType] = useState("password");
   const [icon, setIcon] = useState(eyeOff);
 
-  const { backendUrl, getUserData,setToken } = useContext(AppContext);
+  const { backendUrl, getUserData, setToken } = useContext(AppContext);
 
   const loginHandler = async () => {
     if (!phone || !password) {
@@ -45,19 +39,21 @@ function Login() {
         phone,
         password,
       });
+
       setLoading(false);
+
       if (data.success) {
-       await  setToken(data.data)
-        
-            localStorage.setItem("token", JSON.stringify(data.data || []));
-            toast.success(data.success);
-           await getUserData();
-        
-       
-        toast.success(data.message);
+        await setToken(data.data);
+        localStorage.setItem("token", JSON.stringify(data.data));
+            toast.success(data.message +"please wait "|| "Login successful!  wait");
+        await getUserData();
+
     
+
+        // Optionally navigate after login
+   
       } else {
-        toast.error(data.message);
+        toast.error(data.message || "Login failed");
       }
     } catch (error) {
       setLoading(false);
@@ -77,11 +73,10 @@ function Login() {
         />
       </div>
       <ToastContainer />
-      <MobileLogin
-        visiblePin={showMobileLogin}
-        setVisiblePin={setShowMobileLogin}
-      />
+      <MobileLogin visiblePin={showMobileLogin} setVisiblePin={setShowMobileLogin} />
+
       <div className="container d-flex justify-content-end gap-10 loginForm position-relative border shadow p-3 mt-5">
+        {/* Form Section */}
         <div data-aos="fade-right" className="container">
           <div className="p-3">
             <div className="form-floating mb-3">
@@ -94,6 +89,7 @@ function Login() {
               />
               <label htmlFor="floatingInput">Mobile Number</label>
             </div>
+
             <div className="form-floating position-relative">
               <input
                 type={passwordType}
@@ -106,9 +102,7 @@ function Login() {
                 className="position-absolute top-50 end-0 translate-middle-y pe-3"
                 style={{ cursor: "pointer", zIndex: 2 }}
                 onClick={() => {
-                  setPasswordType(
-                    passwordType === "password" ? "text" : "password"
-                  );
+                  setPasswordType(passwordType === "password" ? "text" : "password");
                   setIcon(passwordType === "password" ? eye : eyeOff);
                 }}
               >
@@ -117,10 +111,7 @@ function Login() {
               <label htmlFor="floatingPassword">Password</label>
 
               <div className="text-end mt-3">
-                <Link
-                  style={{ color: "red", textDecoration: "none" }}
-                  to="/forgot-password"
-                >
+                <Link style={{ color: "red", textDecoration: "none" }} to="/forgot-password">
                   Forgotten Password?
                 </Link>
               </div>
@@ -137,6 +128,7 @@ function Login() {
               </button>
             </div>
           </div>
+
           <div>
             <hr className="w-75 mx-auto" />
             <h5 className="text-center">
@@ -147,16 +139,14 @@ function Login() {
                 className="border mobile-login border-black btn p-2 rounded"
                 onClick={() => setShowMobileLogin(true)}
               >
-                <img
-                  src={gmail}
-                  alt="Gmail"
-                  className="img-fluid gmail-logo mx-3"
-                />
+                <img src={gmail} alt="Gmail" className="img-fluid gmail-logo mx-3" />
                 Log in with OTP
               </p>
             </div>
           </div>
         </div>
+
+        {/* Image Section */}
         <div data-aos="fade-left" className="container loginImageContainer">
           <img
             src={loginImg}
@@ -167,13 +157,15 @@ function Login() {
         </div>
       </div>
 
+      {/* Background Corner Image */}
       <img
         id="signUpImage"
         src={loginImg}
-        className="img-fluid position-absolute top-0 start-0 "
+        className="img-fluid position-absolute top-0 start-0"
         style={{ width: "200px", height: "200px", zIndex: -1 }}
         alt="Login"
       />
+
       <div className="d-flex justify-content-center mt-5">
         <Footer />
       </div>
